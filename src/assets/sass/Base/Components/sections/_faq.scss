@@ -1,0 +1,14 @@
+@use "../../../Abstracts/" as *;
+
+.faq{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20%;
+    
+    @media screen and (max-width: $large) {
+        padding: 0 5%;
+    }
+}

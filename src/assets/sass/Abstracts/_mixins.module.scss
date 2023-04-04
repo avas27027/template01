@@ -1,0 +1,35 @@
+@use "./variables.scss" as *;
+
+@mixin box-shadow-updater($size, $color) {
+  @if $size == sm {
+    box-shadow: 0 3px 10px -5px $color;
+  }@else if $size == mm {
+    box-shadow: 0 5px 10px 0px $color;
+  }@else{
+    box-shadow: 0 3px 10px -5px $color;
+  }
+
+}
+
+@mixin theme-updater() {
+  @each $name, $theme-name in $themes {
+    .theme-#{$name} & {
+      @each $color-name, $color in $theme-name {
+        #{'--'+$color-name}: $color;
+      }
+    }
+  }
+}
+
+@mixin theme-export() {
+  $cont: -1;
+  @each $name, $theme-name in $themes {
+    $cont: $cont + 1;
+    #{$cont}: $name;
+  }
+  length: $cont + 1;
+}
+
+:export {
+  @include theme-export();
+}

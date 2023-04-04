@@ -1,0 +1,44 @@
+@use "../../../Abstracts/" as *;
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fondo_opocite);
+    padding: 5% 5% 0 5% ;
+    gap: 50px;
+    opacity: .6;
+    &-grid{
+        display: flex;
+        flex-direction: row;
+        @media screen and (max-width: $small) {
+            flex-direction: column;
+            gap: 15px;
+        }
+        &-col{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 5px;
+            a{
+                color: var(--fondo);
+            }
+            b{
+                color: var(--fondo);
+                filter: unset;
+            }
+        }
+    }
+    &-copyright{
+        padding: 2% 0;
+        border-top: 1px solid var(--fondo);
+        display: flex;
+        justify-content: space-between;
+        p{
+            display: flex;
+            align-items: center;
+            color: var(--fondo);
+            a{
+                color: var(--fondo);
+            }
+        }
+    }
+}

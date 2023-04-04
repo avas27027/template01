@@ -1,0 +1,50 @@
+@use "../../../Abstracts/" as *;
+.features {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 0;
+  gap: 20vh;
+  .feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20vw;
+    @media screen and (max-width: $small), (orientation: portrait) {
+      flex-direction: column;
+      gap: 10px;
+    }
+    &.inv {
+      flex-direction: row-reverse;
+      @media screen and (max-width: $small), (orientation: portrait) {
+        flex-direction: column;
+      }
+    }
+
+    img {
+      object-fit: cover;
+      width: 30%;
+      aspect-ratio: 4/3;
+      border-radius: 1em;
+      @media screen and (max-width: $small), (orientation: portrait) {
+        height: unset;
+        max-height: 100%;
+        width: 90%;
+      }
+    }
+    .feature-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 20%;
+      gap: 20px;
+
+      @media screen and (max-width: $small), (orientation: portrait) {
+        max-width: 90%;
+      }
+      button {
+        @include box-shadow-updater(mm, var(--inputs_colors));
+      }
+    }
+  }
+}

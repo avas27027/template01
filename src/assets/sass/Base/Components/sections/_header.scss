@@ -1,0 +1,40 @@
+@use "../../../Abstracts/" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 30px;
+  padding: 20px 0;
+  img {
+    width: 50vw;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 1em;
+    @media screen and (max-width: $small) {
+      width: 80vw;
+    }
+  }
+  button {
+    @include box-shadow-updater(mm, var(--inputs_colors));
+    padding: 5%;
+    @media screen and (max-width: $large) {
+      padding: 5% 10%;
+    }
+  }
+  &-description {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    @media screen and (max-width: $large) {
+      max-width: 80%;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Barlow+Semi+Condensed:wght@300&family=Comfortaa:wght@300;600&display=swap");
+
+@font-face {
+  font-family: "Aunchanted";
+  src: url("/AunchantedXspace-Bold.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "A-Space Demo";
+  src: url("/A-Space_Bold_Demo.otf");
+}
+@font-face {
+  font-family: "RockoFLF";
+  src: url("/RockoFLF-Bold.ttf");
+}
+
+$theme-name: light;
+
+$primary_color: #6889a6;
+$secondary_color: #2f6c73;
+$third_color: #aef2f2;
+$fourth_color: #0a1126;
+$fondo: #121d40;
+
+$fiveth_color: #7374d9;
+$sixth_color: #0f0f40;
+
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$xlarge: 1200px;
+
+$primary-font-family: "Lato";
+$secondary-font-family: "Comfortaa";
+$third-font-family: "RockoFLF";
+
+$themes: (
+  light: (
+    titles_colors: #69c75a,
+    secondary_titles_colors: #88bd55,
+    inputs_colors: #58b067,
+    text_color: #ffffff,
+    secondary_text_color: opacify(#0000, .5),
+    fondo: #ffffff,
+    fondo_opocite: #374934,
+    remark_color: #5ac78b,
+    container_color: transparentize(#88bd55, .9),
+    secondary_container_color: transparentize(#88bd55, 0.8),
+  ),
+  dark: (
+    titles_colors: #69c75a,
+    secondary_titles_colors: #88bd55,
+    inputs_colors: #58b067,
+    text_color: #ffffff,
+    secondary_text_color: opacify(#ffffff, .5),
+    fondo: #374934,
+    fondo_opocite: #ffffff,
+    remark_color: #5ac78b,
+    container_color: transparentize(#88bd55, .9),
+    secondary_container_color: transparentize(#88bd55, 0.8),
+  ),
+  orang: (
+    titles_colors: #69c75a,
+    secondary_titles_colors: #88bd55,
+    inputs_colors: #58b067,
+    text_color: #ffffff,
+    secondary_text_color: opacify(#ffffff, .5),
+    fondo: #000000,
+    fondo_opocite: #ffffff,
+    remark_color: #5ac78b,
+    container_color: transparentize(#88bd55, .9),
+    secondary_container_color: transparentize(#88bd55, 0.8),
+  ),
+);

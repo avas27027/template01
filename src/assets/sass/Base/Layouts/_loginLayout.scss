@@ -1,0 +1,27 @@
+@use "../../Abstracts/" as *;
+.loginLayout{
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    @media screen and (max-width:$small), (orientation:portrait) {
+        height: 200vh;
+        flex-direction: column-reverse;
+    }
+    
+    .header{
+        
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+        background-image: url('/back-2.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        p{
+            text-align: center;
+            margin: 0 10%;
+        }
+    }
+}
