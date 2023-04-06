@@ -1,7 +1,7 @@
 @use "../../../Abstracts/" as *;
 
 .indexBar {
-  --w: 10vh;
+  --w: 6vh;
   width: 100%;
   min-height: var(--w);
   display: flex;
@@ -10,19 +10,18 @@
   position: fixed;
   top: 0;
   padding: 0 40px;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background-color: rgb(var(--fondo_opocite), .6);
   transition: 1s;
   z-index: 10;
   &[data-active="false"] {
     transform: translateY(-100vh);
     backdrop-filter: unset;
   }
-  &.move {
-    box-shadow: 0 0 1px 0.1px var(--fondo_opocite);
-  }
   &-logo {
     flex: 1;
+    h2 {
+      color: rgb(var(--fondo));
+    }
   }
   &-content {
     flex: 1;
@@ -34,12 +33,11 @@
     &-link__group {
       display: flex;
       justify-content: space-between;
-      width: 90%;
+      width: 100%;
       @media screen and (max-width: $small) {
         flex-direction: column;
         align-items: center;
         position: absolute;
-        gap: 20px;
         top: 0;
         left: 0;
         width: 100%;
@@ -48,10 +46,7 @@
         transition: 1s;
         z-index: 12;
         font-size: 1.5em;
-        padding: 20px 0;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background-color: var(--fondo_opocite);
+        background-color: rgb(var(--fondo_opocite));
         &[data-active="true"] {
           transform: translateY(100vh);
         }
@@ -62,25 +57,22 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--secondary_titles_colors);
+        //color: rgb(var(--secondary_titles_colors));
+        color: rgb(var(--fondo));
         transition: 0.5s;
         &:hover {
-          color: var(--fondo_opocite);
-          border-bottom: 1px solid var(--fondo_opocite);
-        }
-        @media screen and (max-width: $small) {
-          color: var(--fondo);
+          border-bottom: 1px solid rgb(var(--fondo));
         }
       }
       button {
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: unset;
-        color: var(--fondo);
-        @media screen and (max-width: $small) {
-          flex: 1;
-        }
+        //color: rgb(var(--secondary_titles_colors));
+        color: rgb(var(--fondo));
+        padding: 0;
       }
     }
     &.but {
@@ -88,7 +80,7 @@
       align-items: center;
       padding: 0;
       background-color: unset;
-      color: var(--fondo_opocite);
+      color: rgb(var(--fondo));
 
       @media screen and (max-width: $small) {
         display: flex;

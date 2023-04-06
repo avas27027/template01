@@ -83,13 +83,12 @@
     position: absolute;
     top: calc(45%);
     z-index: 1;
-    background-color: var(--fondo_opocite);
-    background: filter(opacity);
+    background-color: rgb(var(--fondo_opocite));
     border-radius: 100%;
     padding: 1%;
     font-size: 2em;
     opacity: .4;
-    color: var(--fondo);
+    color: rgb(var(--fondo));
     &[data-active="false"] {
       display: none;
     }
@@ -109,7 +108,7 @@
     bottom: 5%;
     left: calc(50% - var(--slides) * 10px);
     z-index: 1;
-    background-color: var(--fondo_opocite);
+    background-color: rgb(var(--fondo_opocite));
     opacity: .4;
     backdrop-filter: blur(3px);
     padding: 10px;
@@ -121,11 +120,11 @@
       cursor: pointer;
       width: 10px;
       height: 10px;
-      background-color: var(--fondo);
+      background-color: rgb(var(--fondo));
       opacity: .4;
       border-radius: 100%;
       &[data-active="true"] {
-        background-color: var(--fondo);
+        background-color: rgb(var(--fondo));
         opacity: 1;
       }
     }

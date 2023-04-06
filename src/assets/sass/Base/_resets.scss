@@ -1,7 +1,7 @@
 @use "../Abstracts/" as *;
 body {
   @include theme-updater();
-  background-color: var(--fondo);
+  background-color: rgb(var(--fondo));
 }
 * {
   box-sizing: border-box;
@@ -27,9 +27,9 @@ a[aria-current] {
 button {
   border: none;
   width: fit-content;
-  background-color: var(--inputs_colors);
+  background-color: rgb(var(--inputs_colors));
   border-radius: 8px;
-  padding: 5px 10px;
+  padding: 10px;
   color: white;
   cursor: pointer;
   font-size: 1.2em;
@@ -51,72 +51,73 @@ $type: "text", "email", "password";
 
 @each $t in $type {
   input[type="#{$t}"] {
-    border: 0px solid var(--inputs_colors);
-    border-bottom: 1px solid var(--inputs_colors);
+    background-color: unset;
+    border: 0px solid rgb(var(--inputs_colors));
+    border-bottom: 1px solid rgb(var(--inputs_colors));
     padding-left: 3%;
-    color: var(--remark_color);
+    color: rgb(var(--remark_color));
   }
   input[type="#{$t}"]:hover {
-    border-bottom: 1px solid var(--remark_color);
+    border-bottom: 1px solid rgb(var(--remark_color));
     &::placeholder {
-      color: var(--remark_color);
+      color: rgb(var(--remark_color));
       opacity: 1;
     }
   }
   input[type="#{$t}"]::placeholder {
-    color: var(--inputs_colors);
+    color: rgb(var(--inputs_colors));
     opacity: 0.5;
   }
   input[type="#{$t}"]:focus {
-    border-color: var(--remark_color);
-    border-bottom: 1px solid var(--remark_color);
+    border-color: rgb(var(--remark_color));
+    border-bottom: 1px solid rgb(var(--remark_color));
     outline-width: 0px;
     &::placeholder {
-      color: var(--remark_color);
+      color: rgb(var(--remark_color));
       opacity: 1;
     }
   }
 }
 input[type="checkbox"] {
   transition: all 500ms;
-  border: 1px solid var(--inputs_colors);
+  border: 1px solid rgb(var(--inputs_colors));
   &:focus {
-    box-shadow: 0 0 1pt 3pt var(--remark_color);
-    border: 1px solid var(--remark_color);
+    box-shadow: 0 0 1pt 3pt rgb(var(--remark_color));
+    border: 1px solid rgb(var(--remark_color));
   }
 }
 input[type="checkbox"]:checked {
-  background: var(--inputs_colors);
-  border: 1px solid var(--inputs_colors);
+  background: rgb(var(--inputs_colors));
+  border: 1px solid rgb(var(--inputs_colors));
 }
 
 h1,
 h2 {
-  color: var(--titles_colors);
+  color: rgb(var(--titles_colors));
   font-family: $secondary-font-family;
   font-weight: 700;
 }
 h3,
 h4,
 h5 {
-  color: var(--secondary_titles_colors);
+  color: rgb(var(--secondary_titles_colors));
   font-family: $secondary-font-family;
   font-weight: 300;
 }
 
 p {
-  color: var(--secondary_text_color);
+  color: rgb(var(--secondary_text_color));
 }
 
 b {
-  color: var(--remark_color);
+  color: rgb(var(--remark_color));
   filter: brightness(10);
 }
 u {
-  color: var(--remark_color);
+  color: rgb(var(--remark_color));
   filter: brightness(10);
 }
 
 label {
-  color: var(--text_color);
+  color: rgb(var(--text_color));
 }

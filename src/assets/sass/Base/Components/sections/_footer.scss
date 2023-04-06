@@ -2,7 +2,7 @@
 .footer{
     display: flex;
     flex-direction: column;
-    background-color: var(--fondo_opocite);
+    background-color: rgb(var(--fondo_opocite));
     padding: 5% 5% 0 5% ;
     gap: 50px;
     opacity: .6;
@@ -19,25 +19,25 @@
             flex: 1;
             gap: 5px;
             a{
-                color: var(--fondo);
+                color: rgb(var(--fondo));
             }
             b{
-                color: var(--fondo);
+                color: rgb(var(--fondo));
                 filter: unset;
             }
         }
     }
     &-copyright{
         padding: 2% 0;
-        border-top: 1px solid var(--fondo);
+        border-top: 1px solid rgb(var(--fondo));
         display: flex;
         justify-content: space-between;
         p{
             display: flex;
             align-items: center;
-            color: var(--fondo);
+            color: rgb(var(--fondo));
             a{
-                color: var(--fondo);
+                color: rgb(var(--fondo));
             }
         }
     }

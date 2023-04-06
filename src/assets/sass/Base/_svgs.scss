@@ -1,0 +1,20 @@
+@use "../Abstracts/" as *;
+
+#wave-1{
+    animation: w-1 5s infinite alternate ease-in-out;
+    fill: rgb(var(--fondo_opocite),.2);
+}
+#wave-2{
+    animation: w-2 5s infinite alternate 2s ease-in-out;
+    fill: rgb(var(--fondo_opocite),.8);
+}
+@keyframes w-1{
+    to{
+        transform: translateX(-20%);
+    }
+}
+@keyframes w-2{
+    to{
+        transform: translateX(-10%);
+    }
+}

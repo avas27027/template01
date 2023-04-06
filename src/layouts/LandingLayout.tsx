@@ -116,7 +116,7 @@ export default function LandingLayout() {
   ];
   return (
     <div className="landingLayout">
-      <Header minHeight="90svh" margin="10svh 0 0 0"></Header>
+      <Header minHeight="93svh" margin="4svh 0 0 0"></Header>
       <Features features={ar}></Features>
       <FAQ faqs={faq} margin="20vh 0"></FAQ>
       <SlideShow

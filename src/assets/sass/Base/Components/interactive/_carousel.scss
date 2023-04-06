@@ -38,9 +38,9 @@
     position: absolute;
     top: calc(48%);
     z-index: 1;
-    background-color: var(--fondo_opocite);
-    opacity: .4;
-    color: var(--fondo);
+    background-color: rgb(var(--fondo_opocite));
+    opacity: 0.4;
+    color: rgb(var(--fondo));
     border-radius: 100%;
     padding: 1%;
     font-size: 2em;

@@ -6,7 +6,8 @@ import store from "./app/store";
 import Footer from "./components/sections/Footer";
 import LandingLayout from "./layouts/LandingLayout";
 import IndexBar from "./components/sections/IndexBar";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginLayout from "./layouts/LoginLayout";
 const foot = [
   {
     title: "Products",
@@ -25,12 +26,31 @@ const foot = [
     ],
   },
 ];
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LandingLayout></LandingLayout>,
+  },
+  {
+    path: "/login",
+    element: <LoginLayout></LoginLayout>,
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
     <React.StrictMode>
-      <IndexBar></IndexBar>
-      <LandingLayout></LandingLayout>
-
+      <IndexBar
+        height="6vh"
+        themeBut={true}
+        title="Angle"
+        links={[
+          { name: "Features", l: "#" },
+          { name: "Blog", l: "#" },
+          { name: "Resources", l: "#" },
+        ]}
+      ></IndexBar>
+      <RouterProvider router={router} />
       <Footer data={foot}></Footer>
     </React.StrictMode>
   </Provider>

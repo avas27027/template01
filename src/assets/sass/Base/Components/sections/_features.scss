@@ -3,20 +3,20 @@
   display: flex;
   flex-direction: column;
   margin: 5% 0;
-  gap: 20vh;
+  gap: 50px;
   .feature {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20vw;
-    @media screen and (max-width: $small), (orientation: portrait) {
+    gap: 10%;
+    @media screen and (max-width: $small) {
       flex-direction: column;
       gap: 10px;
     }
     &.inv {
       flex-direction: row-reverse;
-      @media screen and (max-width: $small), (orientation: portrait) {
+      @media screen and (max-width: $small) {
         flex-direction: column;
       }
     }
@@ -26,7 +26,7 @@
       width: 30%;
       aspect-ratio: 4/3;
       border-radius: 1em;
-      @media screen and (max-width: $small), (orientation: portrait) {
+      @media screen and (max-width: $small) {
         height: unset;
         max-height: 100%;
         width: 90%;
@@ -36,10 +36,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 20%;
+      max-width: 25%;
       gap: 20px;
 
-      @media screen and (max-width: $small), (orientation: portrait) {
+      @media screen and (max-width: $small) {
         max-width: 90%;
       }
       button {
