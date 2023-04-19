@@ -59,9 +59,13 @@
         justify-content: center;
         //color: rgb(var(--secondary_titles_colors));
         color: rgb(var(--fondo));
-        transition: 0.5s;
+        //transition: 0.5s;
         &:hover {
           border-bottom: 1px solid rgb(var(--fondo));
+        }
+        &.active{
+        color: rgb(var(--fondo),.5);
+        font-size: 1.2em;
         }
       }
       button {

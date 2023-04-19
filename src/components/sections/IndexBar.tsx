@@ -1,12 +1,10 @@
 import React, { CSSProperties, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import {
-  useAppDispatch,
-  useAppSelector,
-  useScrollPosition,
-} from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { setTheme } from "../../app/slices/themeSlice";
+import { Router, NavLink } from "react-router-dom";
+
 export default function IndexBar(props: {
   height: string;
   themeBut?: boolean;
@@ -30,9 +28,9 @@ export default function IndexBar(props: {
         <div className="indexBar-content-link__group" data-active={dropToogle}>
           {props.links.map((l, index) => {
             return (
-              <a key={"link-" + index} href={l.l}>
+              <NavLink key={"link-" + index} to={l.l}>
                 {l.name}
-              </a>
+              </NavLink>
             );
           })}
           <button

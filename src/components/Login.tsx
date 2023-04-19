@@ -1,29 +1,26 @@
 import { useEffect, useState } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../app/hooks";
-import { setUser, setPass } from "../app/slices/userSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { setUser } from "../app/slices/userSlice";
 import jwtDecode from "jwt-decode";
 import FacebookLogin from "react-facebook-login";
 import { AiFillFacebook } from "react-icons/ai";
 export default function Login() {
   const user = useAppSelector((state) => state.userSlice.user);
-  const pass = useAppSelector((state) => state.userSlice.pass);
 
   const [userN, setUserN] = useState("");
-  const [passN, setPassN] = useState("");
   const dispach = useAppDispatch();
 
+  /*
   function handleCredentialResponse(response: any) {
     const u: { name: string | null; email: string } = jwtDecode(
       response.credential
     );
     dispach(setUser(u.email));
-  }
+  }*/
   const responseFacebook = (response: any) => {
     console.log(response);
   };
+  /*
   useEffect(() => {
     window.crossOriginIsolated;
     google.accounts.id.initialize({
@@ -36,11 +33,11 @@ export default function Login() {
       { type: "standard", theme: "outline", size: "large" } // customization attributes
     );
     google.accounts.id.prompt();
-  });
+  });*/
 
   return (
     <div className="login">
-      <form action="" className="login-form">
+      <div className="login-form">
         <h1>Login</h1>
         <input
           onChange={(e) => {
@@ -54,7 +51,6 @@ export default function Login() {
         />
         <input
           onChange={(e) => {
-            setPassN(e.target.value);
             console.log(e.target.value);
           }}
           placeholder="Contraseña"
@@ -65,13 +61,15 @@ export default function Login() {
         <button
           onClick={() => {
             dispach(setUser(userN));
-            dispach(setPass(passN));
           }}
         >
           Ingresar
         </button>
         <p>O</p>
-        <div id="buttonDiv"></div>
+        <a href="https://strapi-test-vgs0.onrender.com/api/connect/google">
+          <button>Google</button>
+        </a>
+
         <FacebookLogin
           appId="514358457065846"
           autoLoad={false}
@@ -83,9 +81,8 @@ export default function Login() {
         />
         <h1>
           {user}
-          {pass}
         </h1>
-      </form>
+      </div>
     </div>
   );
 }
