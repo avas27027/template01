@@ -69,16 +69,10 @@ export default function Login() {
         <a href="https://strapi-test-vgs0.onrender.com/api/connect/google">
           <button>Google</button>
         </a>
+        <a href="https://strapi-test-vgs0.onrender.com/api/connect/facebook">
+          <button>Facebook</button>
+        </a>
 
-        <FacebookLogin
-          appId="514358457065846"
-          autoLoad={false}
-          fields="name,email,picture"
-          textButton=" Ingresa con Facebook"
-          callback={responseFacebook}
-          cssClass="login-face"
-          icon={<AiFillFacebook />}
-        />
         <h1>
           {user}
         </h1>
