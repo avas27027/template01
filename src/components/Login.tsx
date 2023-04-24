@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setUser } from "../app/slices/userSlice";
 import jwtDecode from "jwt-decode";
-import FacebookLogin from "react-facebook-login";
+//import FacebookLogin from "react-facebook-login";
 import { AiFillFacebook } from "react-icons/ai";
 export default function Login() {
   const user = useAppSelector((state) => state.userSlice.user);
@@ -16,7 +16,7 @@ export default function Login() {
       response.credential
     );
     dispach(setUser(u.email));
-  }*/
+  }
   const responseFacebook = (response: any) => {
     console.log(response);
   };
@@ -72,7 +72,6 @@ export default function Login() {
         <a href="https://strapi-test-vgs0.onrender.com/api/connect/facebook">
           <button>Facebook</button>
         </a>
-
         <h1>
           {user}
         </h1>
