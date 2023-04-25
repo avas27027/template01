@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://avas27027.github.io/template01",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
