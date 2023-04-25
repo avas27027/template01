@@ -12,7 +12,7 @@ import Card from "./components/paterns/Card";
 import BlogIndexLayout from "./layouts/BlogIndexLayout";
 import LoginRedirect from "./components/LoginRedirect";
 
-const url = import.meta.env.VITE_BACKEND_URL
+const url = import.meta.env.VITE_PROD_URL
 const foot = [
   {
     title: "Products",
