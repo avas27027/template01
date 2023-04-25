@@ -6,7 +6,7 @@ import store from "./app/store";
 import Footer from "./components/sections/Footer";
 import LandingLayout from "./layouts/LandingLayout";
 import IndexBar from "./components/sections/IndexBar";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "./layouts/LoginLayout";
 import Card from "./components/paterns/Card";
 import BlogIndexLayout from "./layouts/BlogIndexLayout";
@@ -34,7 +34,7 @@ const foot = [
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
     <React.StrictMode>
-      <HashRouter>
+      <BrowserRouter>
         <IndexBar
           height="6vh"
           themeBut={true}
@@ -62,7 +62,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             }
           />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
       <Footer data={foot}></Footer>
     </React.StrictMode>
   </Provider>

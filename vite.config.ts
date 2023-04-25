@@ -13,7 +13,7 @@ export default defineConfig(({ command, mode }) => {
   } else {
     return {
       plugins: [react()],
-      base: env.VITE_PROD_URL,
+      //base: env.VITE_PROD_URL,
     };
   }
 });
