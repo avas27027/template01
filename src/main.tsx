@@ -12,6 +12,7 @@ import Card from "./components/paterns/Card";
 import BlogIndexLayout from "./layouts/BlogIndexLayout";
 import LoginRedirect from "./components/LoginRedirect";
 
+const url = import.meta.env.VITE_BACKEND_URL
 const foot = [
   {
     title: "Products",
@@ -40,16 +41,16 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           themeBut={true}
           title="Angle"
           links={[
-            { name: "Features", l: "/" },
-            { name: "Blog", l: "/blog" },
-            { name: "Resources", l: "/login" },
+            { name: "Features", l: url },
+            { name: "Blog", l: url+"/blog" },
+            { name: "Resources", l: url+"/login" },
           ]}
         ></IndexBar>
         <Routes>
-          <Route path="/" element={<LandingLayout></LandingLayout>} />
-          <Route path="/login" element={<LoginLayout></LoginLayout>} />
-          <Route path="/blog" element={<BlogIndexLayout></BlogIndexLayout>} />
-          <Route path="/connect/:providerName/redirect" element={ <LoginRedirect/> } />
+          <Route path={url+"/"} element={<LandingLayout></LandingLayout>} />
+          <Route path={url+"/login"} element={<LoginLayout></LoginLayout>} />
+          <Route path={url+"/blog"} element={<BlogIndexLayout></BlogIndexLayout>} />
+          <Route path={url+"/connect/:providerName/redirect"} element={ <LoginRedirect/> } />
           <Route
             path="/card/:id"
             element={
