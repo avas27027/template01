@@ -40,13 +40,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           themeBut={true}
           title="Angle"
           links={[
-            { name: "Features", l: "/" },
+            { name: "Features", l: "" },
             { name: "Blog", l: "/blog" },
             { name: "Resources", l: "/login" },
           ]}
         ></IndexBar>
         <Routes>
-          <Route path="/" element={<LandingLayout></LandingLayout>} />
+          <Route path="" element={<LandingLayout></LandingLayout>} />
           <Route path="/login" element={<LoginLayout></LoginLayout>} />
           <Route path="/blog" element={<BlogIndexLayout></BlogIndexLayout>} />
           <Route path="/connect/:providerName/redirect" element={ <LoginRedirect/> } />
