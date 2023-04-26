@@ -30,6 +30,7 @@ export default function LoginRedirect() {
           "todo ok"
         );
         //setTimeout(() => navigate("/"), 3000); // Redirect to homepage after 3 sec
+        navigate("/")
       })
       .catch((err) => {
         console.log(err);

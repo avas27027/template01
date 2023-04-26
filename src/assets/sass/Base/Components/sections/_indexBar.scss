@@ -61,10 +61,10 @@
         color: rgb(var(--fondo));
         //transition: 0.5s;
         &:hover {
-          border-bottom: 1px solid rgb(var(--fondo));
+          border-bottom: 1px solid rgb(var(--fondo_opocite));
         }
         &.active{
-        color: rgb(var(--fondo),.5);
+        color: rgb(var(--fondo_opocite));
         font-size: 1.2em;
         }
       }
