@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setUser } from "../app/slices/userSlice";
 import jwtDecode from "jwt-decode";
 //import FacebookLogin from "react-facebook-login";
-import { AiFillFacebook } from "react-icons/ai";
+import { AiFillFacebook, AiOutlineGoogle } from "react-icons/ai";
 export default function Login() {
   const user = useAppSelector((state) => state.userSlice.user);
 
@@ -67,10 +67,10 @@ export default function Login() {
         </button>
         <p>O</p>
         <a href="https://strapi-test-vgs0.onrender.com/api/connect/google">
-          <button>Google</button>
+          <button id="googleBut"><AiOutlineGoogle/>Google</button>
         </a>
         <a href="https://strapi-test-vgs0.onrender.com/api/connect/facebook">
-          <button>Facebook</button>
+          <button id="facebookBut"><AiFillFacebook/>Facebook</button>
         </a>
         <h1>
           {user}
