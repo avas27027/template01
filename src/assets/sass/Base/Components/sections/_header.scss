@@ -19,9 +19,9 @@
   }
   button {
     @include box-shadow-updater(mm, var(--inputs_colors));
-    padding: 5%;
+    padding: 15px;
     @media screen and (max-width: $large) {
-      padding: 5% 10%;
+      padding: 15px 30px;
     }
   }
   &-description {

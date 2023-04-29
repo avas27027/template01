@@ -1,21 +1,19 @@
-import React from "react";
 import {
   AiOutlineInstagram,
   AiOutlineTwitter,
   AiOutlineCopyright,
 } from "react-icons/ai";
 import { useAppSelector } from "../../app/hooks";
-export default function Footer(props: {
-  data: Array<{
-    title: string;
-    content: Array<{ name: string; link: string }>;
-  }>;
-}) {
+import { useFooter } from "../../queries/FooterHook";
+
+export default function Footer() {
   const language = useAppSelector((state) => state.languageSlice.language);
+  const data = useFooter()!
+
   return (
     <div className="footer">
       <div className="footer-grid">
-        {props.data.map((d, index) => {
+        {data.map((d, index) => {
           return (
             <div className="footer-grid-col" key={"d-" + index}>
               <b>{d.title}</b>

@@ -4,16 +4,17 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { setTheme } from "../../app/slices/themeSlice";
 import { Router, NavLink } from "react-router-dom";
+import { useIndexBar } from "../../queries/IndexBarHook";
 
 export default function IndexBar(props: {
   height: string;
   themeBut?: boolean;
   title: string;
-  links: Array<{ name: string; l: string }>;
 }) {
   const [dropToogle, setDropToogle] = useState(false);
   const theme = useAppSelector((state) => state.themeSlice.theme);
   const dispach = useAppDispatch();
+  const data = useIndexBar()!
 
   return (
     <div
@@ -26,7 +27,7 @@ export default function IndexBar(props: {
       </div>
       <div className="indexBar-content">
         <div className="indexBar-content-link__group" data-active={dropToogle}>
-          {props.links.map((l, index) => {
+          {data.map((l, index) => {
             return (
               <NavLink key={"link-" + index} to={l.l}>
                 {l.name}

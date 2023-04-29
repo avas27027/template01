@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../app/hooks";
 
 export default function Features(props: {
-  features: Array<{ img: string; title: string; desc: string }>;
+  features: Array<{ img: string; title: string; link:string; desc: string }>;
   margin?: string;
 }) {
   const arr = props.features;
@@ -18,7 +18,7 @@ export default function Features(props: {
             <div className="feature-content">
               <h2>{f.title}</h2>
               <h3>{f.desc}</h3>
-              <button>{language === "ES" ? "Leer más" : "Read More"}</button>
+              <a href={f.link}><button>{language === "ES" ? "Leer más" : "Read More"}</button></a>
             </div>
           </div>
         );
