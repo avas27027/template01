@@ -1,0 +1,19 @@
+@use "../../../Abstracts/" as *;
+.blogSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    &-text{
+        padding: 0 10%;
+        white-space: pre-line;
+        text-align: justify;
+    }
+    &-date{
+        width: 80%;
+        text-align: right;
+    }
+    img{
+        border-radius: 1em;
+    }
+}

@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route path="" element={<LandingLayout></LandingLayout>} />
           <Route path="/login" element={<LoginLayout></LoginLayout>} />
           <Route path="/blog" element={<BlogIndexLayout></BlogIndexLayout>} />
-          <Route path="/blog/:id" element={<BlogSection></BlogSection>} />
+          <Route path="/blog/:id" element={<BlogSection margin="10vh 0"></BlogSection>} />
           <Route path="/connect/:providerName/redirect" element={ <LoginRedirect/> } />
           <Route
             path="/card/:id"
