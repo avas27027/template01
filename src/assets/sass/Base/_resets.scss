@@ -78,6 +78,7 @@ $type: "text", "email", "password";
     }
   }
 }
+/*
 input[type="checkbox"] {
   transition: all 500ms;
   border: 1px solid rgb(var(--inputs_colors));
@@ -89,7 +90,7 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
   background: rgb(var(--inputs_colors));
   border: 1px solid rgb(var(--inputs_colors));
-}
+}*/
 
 h1,
 h2 {
@@ -118,5 +119,5 @@ u {
 }
 
 label {
-  color: rgb(var(--text_color));
+  color: rgb(var(--secondary_text_color));
 }

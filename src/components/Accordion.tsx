@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 export default function Accordion(props: {
   items: Array<{ title: string; desc: string }>;
+  hide?: boolean
 }) {
   const arr = props.items;
   const accDesc = useRef<Array<HTMLDivElement>>([]);

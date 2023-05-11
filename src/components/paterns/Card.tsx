@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
 export default function Card(props: {
   width: string;
@@ -9,7 +8,6 @@ export default function Card(props: {
   desc: string;
   button?: { butname: string; butlink: string };
 }) {
-  const params = useParams();
   
   return (
     <div
@@ -24,7 +22,7 @@ export default function Card(props: {
       </div>
       <div className="card-content">
         <h3>{props.title}</h3>
-        <p>{props.desc + params.id}</p>
+        <p>{props.desc}</p>
         <button
           style={{ display: props.button === undefined ? "none" : "unset" }}
         >

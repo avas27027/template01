@@ -1,0 +1,104 @@
+@use "../../Abstracts/" as *;
+
+.productFinderLayout {
+    margin: 7vh 1vw;
+    display: flex;
+
+    &-container {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-searchContainer {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        padding: 20px 0;
+        gap: 50px;
+
+        label {
+            color: var(--fondo_opocite);
+        }
+
+        input {
+            flex: 2;
+            width: 50%;
+            font-size: 1em;
+            height: 100%;
+        }
+
+        button {
+            flex: 1;
+            font-size: 1em;
+            height: 100%;
+            //padding: 5px 10px;
+        }
+    }
+
+    &-productBox {
+        flex: 3;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: auto;
+        grid-gap: 20px;
+
+    }
+
+    &.leftBar {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        &-nav {
+            margin: 0;
+            font-size: .8em;
+        }
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            gap: 10px;
+
+            .leftBar-filters {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin: 0;
+                gap: 10px;
+
+                &.categories {
+                    a {
+                        padding: 2px 5px;
+                        @include box-shadow-updater(mm, rgb(var(--fondo_opocite)));
+                        border-radius: .2em;
+
+                        &.active {
+                            background-color: rgb(var(--container_color));
+                        }
+                    }
+                }
+
+                &.colors {
+                    &-radio {
+                        width: fit-content;
+                        display: flex;
+                        align-items: baseline;
+                        padding: 2px 5px;
+                        @include box-shadow-updater(sm, rgb(var(--fondo_opocite)), uniform);
+                        input{
+                            display: none;
+                        }
+                        input[type="checkbox"]:checked~p>label{
+                            color: rgb(var(--remark_color));
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+}

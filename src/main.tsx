@@ -12,7 +12,7 @@ import Card from "./components/paterns/Card";
 import BlogIndexLayout from "./layouts/BlogIndexLayout";
 import LoginRedirect from "./components/LoginRedirect";
 import BlogSection from "./components/sections/BlogSection";
-
+import ProductsFinderLayout from "./layouts/ProductsFinderLayout";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
     <React.StrictMode>
@@ -27,18 +27,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Route path="/login" element={<LoginLayout></LoginLayout>} />
           <Route path="/blog" element={<BlogIndexLayout></BlogIndexLayout>} />
           <Route path="/blog/:id" element={<BlogSection margin="10vh 0"></BlogSection>} />
+          <Route path="/products" element={<ProductsFinderLayout/> }/>
+          <Route path="/products/:category" element={<ProductsFinderLayout/> }/>
+          <Route path="/products/:category/:subcategory" element={<ProductsFinderLayout/> }/>
           <Route path="/connect/:providerName/redirect" element={ <LoginRedirect/> } />
-          <Route
-            path="/card/:id"
-            element={
-              <Card
-                width="80%"
-                title="ejemplo"
-                picture="https://media.istockphoto.com/id/1175781029/vector/gray-linear-abstract-background-for-your-design-vector.jpg?s=1024x1024&w=is&k=20&c=g2V6sGnFuvo0hT-CDp2UKjIqCw_yEh1ebSc9dhZupsg="
-                desc="esta es una prueba"
-              />
-            }
-          />
         </Routes>
       </HashRouter>
       <Footer></Footer>
