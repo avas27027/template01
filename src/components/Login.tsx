@@ -9,6 +9,7 @@ export default function Login() {
 
   const [userN, setUserN] = useState("");
   const dispach = useAppDispatch();
+  const url = import.meta.env.VITE_BACKEND_URL
 
   /*
   function handleCredentialResponse(response: any) {
@@ -66,11 +67,11 @@ export default function Login() {
           Ingresar
         </button>
         <p>O</p>
-        <a href="https://strapi-test-vgs0.onrender.com/api/connect/google">
-          <button id="googleBut"><AiOutlineGoogle/>Google</button>
+        <a href={url+"/api/connect/google"}>
+          <button id="googleBut"><AiOutlineGoogle />Google</button>
         </a>
-        <a href="https://strapi-test-vgs0.onrender.com/api/connect/facebook">
-          <button id="facebookBut"><AiFillFacebook/>Facebook</button>
+        <a href={url+"/api/connect/facebook"}>
+          <button id="facebookBut"><AiFillFacebook />Facebook</button>
         </a>
         <h1>
           {user}
