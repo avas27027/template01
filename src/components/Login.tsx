@@ -70,7 +70,7 @@ export default function Login() {
         <a href={url+"/api/connect/google"}>
           <button id="googleBut"><AiOutlineGoogle />Google</button>
         </a>
-        <a href={url+"/api/connect/facebook"}>
+        <a href={url+"/api/connect/facebook/callback"}>
           <button id="facebookBut"><AiFillFacebook />Facebook</button>
         </a>
         <h1>
