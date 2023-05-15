@@ -11,6 +11,7 @@ export default function LoginRedirect() {
   const dispach = useAppDispatch();
   const url = import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
+    console.log(location.search)
     fetch(
       `${url}/api/auth/${params.providerName}/callback${location.search}`
     )
