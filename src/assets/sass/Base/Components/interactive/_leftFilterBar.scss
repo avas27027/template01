@@ -1,0 +1,48 @@
+@use "../../../Abstracts/" as *;
+
+.leftFilterBar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &-nav {
+        display: flex;
+        gap: 5px;
+    }
+    &-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &-items {
+        display: flex;
+        gap: 5px;
+
+        a {
+            padding: 2px 5px;
+            @include box-shadow-updater(sm, rgb(var(--fondo_opocite)), uniform);
+            border-radius: .2em;
+            &.active {
+                background-color: rgb(var(--container_color));
+            }
+        }
+
+        &-box {
+
+            p>label {
+            padding: 2px 5px;
+            border-radius: .2em;
+            @include box-shadow-updater(sm, rgb(var(--fondo_opocite)), uniform);
+            cursor: pointer;
+            }
+
+            input[type=checkbox] {
+                display: none;
+            }
+
+            input[type="checkbox"]:checked~p>label {
+                background-color: rgb(var(--container_color));
+            }
+        }
+    }
+}

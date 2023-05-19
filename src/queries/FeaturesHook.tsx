@@ -8,7 +8,7 @@ interface featuresInterface {
           data: {
             attributes: {
               formats: {
-                medium: { url: string }
+                small: { url: string }
               }
             }
           }
@@ -29,7 +29,7 @@ const fetcher = async () => {
     .then((res) => {
       const q: featuresInterface = res.data;
       const arr = q.attributes.Feature.map(({ Title: title, FeaturePicture, Link:link, Desc: desc }) => {
-        const img = FeaturePicture.data.attributes.formats.medium.url;
+        const img = FeaturePicture.data.attributes.formats.small.url;
         return ({ title, img, link, desc })
       })
       return arr

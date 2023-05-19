@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ProductCard from '../components/paterns/ProductCard';
-import { CategoryProductsInterfaceF, useCategoryProducts } from '../queries/CategoryProductsHook';
+import LeftFilterBar from '../components/interactive/LeftFilterBar';
+import { useState } from 'react';
 
 export default function ProductsFinderLayout() {
-    const [selectedColors, setSelectedColors] = useState<Array<string>>([])
     const params = useParams()
-    const category = params.category === undefined ? "" : <Link to={"/products/" + params.category}><p>&emsp;{">" + params.category}</p></Link>
-    const subcategory = params.subcategory === undefined ? "" : <Link to={"/products/" + params.category + "/" + params.subcategory}><p>&emsp;{">" + params.subcategory}</p></Link>
     const data = [
         {
             name: "Vestido DG", price: "39", color: "blanco", link: "/",
@@ -27,42 +24,17 @@ export default function ProductsFinderLayout() {
         }
     ]
     const colors = ["white", "black", "violet", "red", "blue", "brown"]
-    const filtersD = useCategoryProducts()! as Array<CategoryProductsInterfaceF>
+    const sizes = ["XS", "S", "M", "L", "XL"]
+    const [selectedColors, setSelectedColors] = useState<Array<string>>([])
+    const [selectedSizes, setSelectedSizes] = useState<Array<string>>([])
+    const filters = [
+        { "title": "Colores", "boxes": colors, "dispach": setSelectedColors },
+        { "title": "Sizes", "boxes": sizes, "dispach": setSelectedSizes }]
     return (
         <div className='productFinderLayout'>
-
-            <div className="productFinderLayout leftBar">
-                <div className="productFinderLayout leftBar-nav">
-                    <Link to={"/products"}><p>{"Products\t"}</p></Link>{category}{subcategory}
-                </div>
-                {filtersD.map((x, i) => {
-                    return (
-                        <div className='productFinderLayout leftBar-container' key={"t-" + i}>
-                            <NavLink to={"/products/" + x.name}><h4>{x.name}</h4></NavLink>
-                            <div className="leftBar-filters categories">
-                                {x.subcategory_list.map((y, index) =>
-                                    <NavLink key={"l-" + index} to={"/products/" + x.name + "/" + y}>{<p>{y}</p>}</NavLink>)
-                                }
-                            </div>
-                        </div>)
-                })}
-                <div className="productFinderLayout leftBar-container">
-                    <h4>Colores</h4>
-                    {selectedColors}
-                    <div className='leftBar-filters colors'>
-                        {colors.map((x, i) =>
-                            <div className='leftBar-filters colors-radio' key={i}
-                            onClick={()=>console.log(x)}>
-                                
-                                <input id={"rcol-" + x} 
-                                type='checkbox' name='colors' value={x} key={"rcol-" + i} />
-                                <p><label htmlFor={"rcol-" + x}>{x}</label></p>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-
+            <LeftFilterBar category={params.category} subcategory={params.subcategory}
+                checkboxFilters={filters}
+            ></LeftFilterBar>
             <div className="productFinderLayout-container">
                 <div className="productFinderLayout-searchContainer">
                     <input type="text" name='pFinderInput' placeholder='Inicia tu busqueda' />
