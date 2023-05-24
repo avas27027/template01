@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function ProductCard(props: {
-    data:{name: string, price: string, color: string, picture: string, link:string},
+    data: { name: string, price: string, color: string, size: string, subcategory: string, picture: string, link: string },
     width?: string, height?: string
 }) {
     return (
@@ -18,6 +18,8 @@ export default function ProductCard(props: {
                     </div>
 
                     <p>{props.data.color}</p>
+                    <p>{props.data.size}</p>
+                    <p>{props.data.subcategory}</p>
                 </div>
             </Link>
         </div>

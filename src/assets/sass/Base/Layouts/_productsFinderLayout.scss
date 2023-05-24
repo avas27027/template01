@@ -3,6 +3,19 @@
 .productFinderLayout {
     margin: 7vh 1vw;
     display: flex;
+    gap: 20px;
+
+    &-leftBar {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 2vh 1vw;
+        &-nav {
+            display: flex;
+            gap: 5px;
+        }
+    }
 
     &-container {
         flex: 3;
@@ -45,102 +58,4 @@
 
     }
 
-    &.leftBar {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-
-        &-nav {
-            margin: 0;
-            font-size: .8em;
-        }
-
-        &-container {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-            gap: 10px;
-
-            .leftBar-filters {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                margin: 0;
-                gap: 10px;
-
-                &.categories {
-                    a {
-                        padding: 2px 5px;
-                        @include box-shadow-updater(mm, rgb(var(--fondo_opocite)));
-                        border-radius: .2em;
-
-                        &.active {
-                            background-color: rgb(var(--container_color));
-                        }
-                    }
-                }
-
-                &.items {
-                    &-radio {
-                        width: fit-content;
-                        display: flex;
-                        align-items: baseline;
-                        padding: 2px 5px;
-                        @include box-shadow-updater(sm, rgb(var(--fondo_opocite)), uniform);
-                        input{
-                            display: none;
-                        }
-                        input[type="checkbox"]:checked~p>label{
-                            color: rgb(var(--remark_color));
-                        }
-                    }
-                    .fromSlider{
-                        z-index: 1;
-                        height: 0;
-                    }
-                    input[type=range]::-webkit-slider-thumb {
-                        -webkit-appearance: none;
-                        pointer-events: all;
-                        width: 24px;
-                        height: 24px;
-                        background-color: #fff;
-                        border-radius: 50%;
-                        box-shadow: 0 0 0 1px #C6C6C6;
-                        cursor: pointer;
-                      }
-                      input[type=range]::-moz-range-thumb {
-                        -webkit-appearance: none;
-                        pointer-events: all;
-                        width: 24px;
-                        height: 24px;
-                        background-color: #fff;
-                        border-radius: 50%;
-                        box-shadow: 0 0 0 1px #C6C6C6;
-                        cursor: pointer;  
-                      }
-                      input[type=range]::-webkit-slider-thumb:hover {
-                        background: #f7f7f7;
-                      }
-                      
-                      input[type=range]::-webkit-slider-thumb:active {
-                        box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
-                        -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
-                      }
-                      
-                      input[type="range"] {
-                        -webkit-appearance: none; 
-                        appearance: none;
-                        height: 1px;
-                        width: 20%;
-                        position: absolute;
-                        background-color: #C6C6C6;
-                        pointer-events: none;
-                      }
-                }
-            }
-
-        }
-
-    }
 }

@@ -1,37 +1,46 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { CategoryProductsInterfaceF, useCategoryProducts } from '../../queries/CategoryProductsHook'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import DoubleRangeSlider from '../paterns/DoubleRangeSlider'
 
+export interface FiltersResponseInterface {
+    filterName: string, filterType: "checkbox" | "doubleRange" | "subcategories", vals: string[]
+}
 export default function LeftFilterBar(props: {
-    category?: string, subcategory?: string
-    checkboxFilters?: Array<{ title: string, boxes: Array<string>, dispach: React.Dispatch<React.SetStateAction<string[]>> }>
+    callback: (response: Array<FiltersResponseInterface>) => any,
+    categoriesFilters?: { filterName: string, categories: Array<{ name: string, subcategory_list: Array<string> }> },
+    checkboxFilters?: Array<{ title: string, filterName: string, boxes: Array<string> }>,
+    doubleRangeFilters?: Array<{ title: string, filterName: string, max: number, min: number, step: number }>
 }) {
-    const category = props.category === undefined ? "" : <Link to={"/products/" + props.category}><p>&emsp;{">" + props.category}</p></Link>
-    const subcategory = props.subcategory === undefined ? "" : <Link to={"/products/" + props.category + "/" + props.subcategory}><p>&emsp;{">" + props.subcategory}</p></Link>
-
-    const filtersD = useCategoryProducts()! as Array<CategoryProductsInterfaceF>
-
+    const [filtersRes, setFiltersRes] = useState<Array<{ filterName: string, filterType: "checkbox" | "doubleRange" | "subcategories", vals: string[] }>>([])
     useEffect(() => {
-        const subList = filtersD.filter(x => x.name === props.category)[0]
-        //console.log(selectedColors)
-    }, [props])
+        if (props.categoriesFilters != undefined) setFiltersRes([{ filterName: props.categoriesFilters.filterName, filterType: "subcategories", vals: [] }])
+    }, [])
+    function getValues(title: string) {
+        let l = filtersRes.filter((x) => x.filterName === title)[0]?.vals
+        return l != undefined ? l : []
+    }
+    function setValues(filterName: string, filterType: "checkbox" | "doubleRange" | "subcategories", vals: string[]) {
+        let valueList = filtersRes.filter(x => x.filterName != filterName)
+        setFiltersRes([...valueList, { filterName, filterType, vals }])
+        props.callback([...valueList, { filterName, filterType, vals }])
 
-    function checkboxClick(l: string[], dispach: React.Dispatch<React.SetStateAction<string[]>>, word: string) {
+    }
+
+    function checkboxClick(title: string, word: string) {
+        let l = getValues(title)
         if (l.includes(word)) {
             let list = l.filter(x => x != word)
-            dispach(list)
+            setValues(title, "checkbox", list)
         }
         else {
-            dispach([...l, word])
+            setValues(title, "checkbox", [...l, word])
         }
     }
+
     return (
         <div className="leftFilterBar">
-            <div className="leftFilterBar-nav">
-                <Link to={"/products"}><p>{"Products\t"}</p></Link>{category}{subcategory}
-            </div>
-            {filtersD.map((x, i) => {
+
+            {props.categoriesFilters?.categories.map((x, i) => {
                 return (
                     <div className='leftFilterBar-container' key={"t-" + i}>
                         <NavLink to={"/products/" + x.name}><h3>{x.name}</h3></NavLink>
@@ -53,7 +62,7 @@ export default function LeftFilterBar(props: {
                                 <div className='leftFilterBar-items-box' key={i}>
                                     <input id={"rcol-" + x.title + i}
                                         type='checkbox' name={x.title} value={y} key={"rcol-" + i}
-                                        onClick={e => checkboxClick(x.boxes, x.dispach, e.currentTarget.value)}
+                                        onClick={e => checkboxClick(x.filterName, e.currentTarget.value)}
                                     />
                                     <p><label htmlFor={"rcol-" + x.title + i}>{y}</label></p>
                                 </div>
@@ -61,10 +70,18 @@ export default function LeftFilterBar(props: {
                         </div>
                     </div>)
             })}
-            <div className="leftFilterBar container">
-                <h4>Precio</h4>
-                <DoubleRangeSlider></DoubleRangeSlider>
-            </div>
+            {props.doubleRangeFilters?.map((x, index) => {
+                return (
+                    <div key={"drange-" + index} className="leftFilterBar-container">
+                        <h4>{x.title}</h4>
+                        <DoubleRangeSlider min={x.min} max={x.max} step={x.step}
+                            dispach={e => {
+                                let f = e.from != x.min ? e.from : "", t = e.to != x.max ? e.to : ""
+                                setValues(x.filterName, "doubleRange", [String(f), String(t)])
+                            }} />
+                    </div>
+                )
+            })}
         </div>
     )
 }
