@@ -18,7 +18,7 @@ interface publicBlogsInterface2 {
     title: string, text: string, slug: string, updatedAt: string,
     blogPicture: {
         formats: {
-            medium: { url: string }
+            small: { url: string }
         }
     }
 }
@@ -48,7 +48,7 @@ const fetcher1 = (...args: any) => fetch(args)
         const title = q.title;
         const date = q.updatedAt;
         const text = q.text;
-        const picture = q.blogPicture === null ? "" : q.blogPicture.formats.medium.url;
+        const picture = q.blogPicture === null ? "" : q.blogPicture.formats.small.url;
         console.log(title)
         return ({ id, title, date, text, picture })
     })
