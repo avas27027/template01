@@ -8,10 +8,12 @@ import { useProducts } from '../queries/ProductsHook';
 export default function ProductsFinderLayout() {
     const params = useParams(), category = params.category, subcategory = params.subcategory
     const categoriesFilters = useCategoryProducts()! as Array<CategoryProductsInterfaceF>
+
     const [filtersSelected, setFiltersSelected] = useState<Array<FiltersResponseInterface>>([])
-    const [searchText, setSearchText] = useState("")
-    const [filtersArray, setfiltersArray] = useState<string[][]>([])
+
+    const [searchText, setSearchText] = useState(""), [filtersArray, setfiltersArray] = useState<string[][]>([])
     const re = useProducts(searchText, filtersArray)
+    
     const data = [
         {
             name: "Vestido DG", price: "39", color: "blanco", link: "/",
@@ -34,8 +36,8 @@ export default function ProductsFinderLayout() {
     const sizes = ["XS", "S", "M", "L", "XL"]
     const rangeFilters = [{ title: "Precio", filterName: "price", max: 1000, min: 0, step: 100 }]
     const checkboxFilters = [
-        { "title": "Colores", "filterName": "caracteristics.color", "boxes": colors },
-        { "title": "Sizes", "filterName": "caracteristics.size", "boxes": sizes }
+        { "title": "Colores", "filterName": "colors_ref.uniqueColorName", "boxes": colors },
+        { "title": "Sizes", "filterName": "size_ref.uniqueSizeName", "boxes": sizes }
     ]
 
     useEffect(() => {
