@@ -4,7 +4,7 @@ interface featuresInterface {
   attributes: {
     Title: string, link: string, Desc: string,
       HeaderPicture: {
-        data: { attributes: { formats: { medium: { url: string } } } }
+        data: { attributes: { formats: { small: { url: string } } } }
       }
   }
 }
@@ -23,7 +23,7 @@ const fetcher = async () => {
       const title = q.attributes.Title
       const desc = q.attributes.Desc
       const link = q.attributes.link
-      const img = q.attributes.HeaderPicture.data.attributes.formats.medium.url
+      const img = q.attributes.HeaderPicture.data.attributes.formats.small.url
       return ({ title, desc,img, link })
     })
     .catch((err) => { console.log(err); });
