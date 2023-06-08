@@ -36,8 +36,8 @@ export default function ProductsFinderLayout() {
     const sizes = ["XS", "S", "M", "L", "XL"]
     const rangeFilters = [{ title: "Precio", filterName: "price", max: 1000, min: 0, step: 100 }]
     const checkboxFilters = [
-        { "title": "Colores", "filterName": "colors_ref.uniqueColorName", "boxes": colors },
-        { "title": "Sizes", "filterName": "size_ref.uniqueSizeName", "boxes": sizes }
+        { "title": "Colores", "filterName": "colors_ref.colorName", "boxes": colors },
+        { "title": "Sizes", "filterName": "size_ref.sizeName", "boxes": sizes }
     ]
 
     useEffect(() => {

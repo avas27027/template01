@@ -31,7 +31,7 @@ export interface productInterfaceF {
 export function useProducts(word: string, filters?: string[][]) {
     const [productRes, setProductRes] = useState<Array<productInterfaceF>>([])
     useEffect(() => {
-        meilisearchCall("product", word, { names: ["subcategory_product.Name", "colors_ref.uniqueColorName", "size_ref.uniqueSizeName", "price"], args: filters != undefined ? filters : [] }).then((res) => {
+        meilisearchCall("product", word, { names: ["subcategory_product.Name", "colors_ref.colorName", "size_ref.sizeName", "price"], args: filters != undefined ? filters : [] }).then((res) => {
             const a: Array<productInterfaceF> = res.hits.map((x) => {
                 const data = x as productInterface
                 const name = data.name
