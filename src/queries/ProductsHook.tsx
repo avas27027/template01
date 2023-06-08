@@ -8,7 +8,7 @@ interface productInterface {
     subcategory_product: { Name: string },
     productPictures: Array<{
         formats: {
-            medium: {
+            thumbnail: {
                 url: string
             }
         }
@@ -39,7 +39,7 @@ export function useProducts(word: string, filters?: string[][]) {
                 const price = data.price
                 const size = data.size_ref.uniqueSizeName
                 const subcategory_product = data.subcategory_product.Name
-                const productPictures = data.productPictures != undefined ? data.productPictures.map((x) => x.formats.medium.url) : [""]
+                const productPictures = data.productPictures != undefined ? data.productPictures.map((x) => x.formats.thumbnail.url) : [""]
                 return ({ name, color, price, size, subcategory_product, productPictures })
             })
             setProductRes(a)
