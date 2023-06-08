@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 interface testiInterface {
     attributes: {
-        comment: string,
+        content: string,
         author: {
             data: {
                 attributes: {
@@ -36,7 +36,7 @@ const fetcher = async () => {
         .then((res) => res.json())
         .then((res) => {
             let x: Array<testiInterface> = res.data;
-            const testis = x.map(({ attributes: { comment: review }, attributes: { author: { data: { attributes: authoAttri } } } }) => {
+            const testis = x.map(({ attributes: { content: review }, attributes: { author: { data: { attributes: authoAttri } } } }) => {
                 const photo = authoAttri.profilePhoto.data === null ? "" : authoAttri.profilePhoto.data.attributes.formats.thumbnail.url;
                 return ({ name: authoAttri.username, social: authoAttri.email, img: photo, review })
             })
