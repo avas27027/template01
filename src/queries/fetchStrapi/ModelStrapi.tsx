@@ -1,11 +1,11 @@
-type indexInterface = {
+export type indexInterface = {
     data: {
         attributes: {
             section: Array<{ name: string, link: string }>
         }
     }
 }
-type headerInterface = {
+export type headerInterface = {
     data: {
         attributes: {
             Title: string, link: string, Desc: string,
@@ -15,7 +15,7 @@ type headerInterface = {
         }
     }
 }
-type featuresInterface = {
+export type featuresInterface = {
     data: {
         attributes: {
             Feature: Array<{
@@ -33,14 +33,14 @@ type featuresInterface = {
         }
     }
 }
-type qaInterface = {
+export type qaInterface = {
     data: {
         attributes: {
             question: Array<{ pregunta: string, respuesta: string }>
         }
     }
 }
-type testiInterface = {
+export type testiInterface = {
     data: Array<{
         attributes: {
             content: string,
@@ -66,7 +66,7 @@ type testiInterface = {
         }
     }>
 }
-type footerInterface = {
+export type footerInterface = {
     data: {
         attributes: {
             FooterSection: Array<{
@@ -79,7 +79,7 @@ type footerInterface = {
         }
     }
 }
-type allPublicBlogsInterface = {
+export type allPublicBlogsInterface = {
     data: {
         attributes: {
             title: string, text: string, slug: string, updatedAt: string,
@@ -95,7 +95,7 @@ type allPublicBlogsInterface = {
         }
     }[]
 }
-type urlPublicBlogInterface = {
+export type urlPublicBlogInterface = {
     title: string, text: string, slug: string, updatedAt: string,
     blogPicture: {
         formats: {
@@ -103,7 +103,7 @@ type urlPublicBlogInterface = {
         }
     }
 }
-type CategoryProductsInterface = {
+export type CategoryProductsInterface = {
     data: Array<{
         attributes: {
             Name: string,
@@ -118,7 +118,7 @@ type CategoryProductsInterface = {
         }
     }>
 }
-type FilterBarInterface = {
+export type FilterBarInterface = {
     data: {
         attributes: {
             subcategoryFilterName: string
@@ -130,9 +130,9 @@ type FilterBarInterface = {
         }
     }
 }
-type ColorsInterface = {
+export type ColorsInterface = {
     data: Array<{ attributes: { colorName: string, uniqueColorName: string, rgb: string } }>
 }
-type SizeInterface = {
+export type SizeInterface = {
     data: Array<{ attributes: { sizeName: string, uniqueSizeName: string } }>
 }

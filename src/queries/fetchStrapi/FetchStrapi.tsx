@@ -1,5 +1,19 @@
 import useSWR from "swr";
 import routes from "./routesStrapi.json"
+import {
+    headerInterface,
+    featuresInterface,
+    qaInterface,
+    testiInterface,
+    footerInterface,
+    indexInterface,
+    allPublicBlogsInterface,
+    urlPublicBlogInterface,
+    CategoryProductsInterface,
+    FilterBarInterface,
+    ColorsInterface,
+    SizeInterface
+} from "./ModelStrapi"
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const url = import.meta.env.VITE_BACKEND_URL
