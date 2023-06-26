@@ -1,48 +1,39 @@
 import ProductCard from '../components/paterns/ProductCard';
-import LeftFilterBar, { FiltersResponseInterface } from '../components/interactive/LeftFilterBar';
+import LeftFilterBar, { FiltersResponseInterface } from '../components/interactive/LeftFilterBar/LeftFilterBar';
 import { useEffect, useState } from 'react';
-import { CategoryProductsInterfaceF, useCategoryProducts } from '../queries/CategoryProductsHook';
 import { Link, useParams } from 'react-router-dom';
-import { useProducts } from '../queries/ProductsHook';
+import FetchStrapi from '../queries/fetchStrapi/FetchStrapi';
+import FetchMeilisearch from '../queries/fetchMeili/FetchMeilisearch';
 
 export default function ProductsFinderLayout() {
     const params = useParams(), category = params.category, subcategory = params.subcategory
-    const categoriesFilters = useCategoryProducts()! as Array<CategoryProductsInterfaceF>
-
-    const [filtersSelected, setFiltersSelected] = useState<Array<FiltersResponseInterface>>([])
-
-    const [searchText, setSearchText] = useState(""), [filtersArray, setfiltersArray] = useState<string[][]>([])
-    const re = useProducts(searchText, filtersArray)
+    const strapiFetch = new FetchStrapi(), categoriesFilters = strapiFetch.useCategoryProduct, filterAttributes = strapiFetch.useFliterBar
     
-    const data = [
-        {
-            name: "Vestido DG", price: "39", color: "blanco", link: "/",
-            picture: "https://i.pinimg.com/originals/db/fb/f4/dbfbf4f38cb0fd9ffed852a42e683917.jpg"
-        },
-        {
-            name: "Vestido DG", price: "39", color: "blanco", link: "/",
-            picture: "https://i.pinimg.com/originals/db/fb/f4/dbfbf4f38cb0fd9ffed852a42e683917.jpg"
-        },
-        {
-            name: "Vestido DG", price: "39", color: "blanco", link: "/",
-            picture: "https://i.pinimg.com/originals/db/fb/f4/dbfbf4f38cb0fd9ffed852a42e683917.jpg"
-        },
-        {
-            name: "Vestido DG", price: "39", color: "blanco", link: "/",
-            picture: "https://i.pinimg.com/originals/db/fb/f4/dbfbf4f38cb0fd9ffed852a42e683917.jpg"
-        }
-    ]
-    const colors = ["white", "black", "violet", "red", "blue", "brown"]
-    const sizes = ["XS", "S", "M", "L", "XL"]
-    const rangeFilters = [{ title: "Precio", filterName: "price", max: 1000, min: 0, step: 100 }]
-    const checkboxFilters = [
-        { "title": "Colores", "filterName": "colors_ref.colorName", "boxes": colors },
-        { "title": "Sizes", "filterName": "size_ref.sizeName", "boxes": sizes }
-    ]
+    const [filtersSelected, setFiltersSelected] = useState<Array<any>>([])
+    const [searchText, setSearchText] = useState(""), [filtersArray, setfiltersArray] = useState<string[][]>([])
+    
+    const meiliFetch = new FetchMeilisearch().useProducts(searchText,filtersArray)
+
+    const rangeFilters = () => {
+        if (filterAttributes.data === undefined) return undefined
+        let { title, filterName } = filterAttributes.data!.doubleRange
+        let max = Number(filterAttributes.data!.doubleRange.max)
+        let min = Number(filterAttributes.data!.doubleRange.min)
+        let step = Number(filterAttributes.data!.doubleRange.step)
+        return [{ title, filterName, max, min, step }]
+    }
+    const checkboxFilters = () => {
+        let fetch = strapiFetch.selectRef()
+        if (filterAttributes.data === undefined) return undefined
+        return filterAttributes.data.checkbox.map(({ title, filterName, api }) => {
+            let boxes = fetch[api] != undefined ? fetch[api]! : [""]
+            return { title, filterName, boxes }
+        })
+    }
 
     useEffect(() => {
         let formatedFilters = formatFilters(filtersSelected)
-        setfiltersArray(formatedFilters)
+        if (!categoriesFilters.isLoading) setfiltersArray(formatedFilters)
     }, [filtersSelected, category, subcategory])
 
     function formatFilters(filters: FiltersResponseInterface[]) {
@@ -73,7 +64,7 @@ export default function ProductsFinderLayout() {
         if (subCatName != undefined) {
             if (subcategory != undefined) sbf = [subCatName + " = " + subcategory]
             else if (category != undefined) {
-                let sb = categoriesFilters.filter(e => e.name === category)[0].subcategory_list
+                let sb = categoriesFilters.data!.filter(e => e.name === category)[0].subcategory_list
                 sb.map((e, i) => {
                     sbf.push(subCatName + " = " + e)
                 })
@@ -87,24 +78,23 @@ export default function ProductsFinderLayout() {
     return (
         <div className='productFinderLayout'>
             <div className="productFinderLayout-leftBar">
-                <div className="productFinderLayout-leftBar-nav">
+                <nav className="productFinderLayout-leftBar-nav">
                     <Link to={"/products"}><p>{"Products"}</p></Link>
                     {category != undefined ? <Link to={"/products/" + category}><p>&emsp;{">"}&emsp;{category}</p></Link> : ""}
                     {subcategory != undefined ? <Link to={"/products/" + category + "/" + subcategory}><p>&emsp;{">"}&emsp;{subcategory}</p></Link> : ""}
-                </div>
-                <LeftFilterBar callback={e => {
-                    setFiltersSelected(e)
-                }} categoriesFilters={{ filterName: "subcategory_product.Name", categories: categoriesFilters }}
-                    checkboxFilters={checkboxFilters} doubleRangeFilters={rangeFilters}
-                ></LeftFilterBar>
+                </nav>
+                {<LeftFilterBar callback={e => { setFiltersSelected(e) }}
+                    categoriesFilters={{ filterName: "subcategory_product.Name", categories: categoriesFilters.data! }}
+                    checkboxFilters={checkboxFilters()} doubleRangeFilters={rangeFilters()}
+                ></LeftFilterBar>}
             </div>
             <div className="productFinderLayout-container">
                 <div className="productFinderLayout-searchContainer">
                     <input type="text" onInput={(e) => setSearchText(e.currentTarget.value)} name='pFinderInput' placeholder='Inicia tu busqueda' />
                 </div>
                 <div className="productFinderLayout-productBox">
-                    {re.map((b, index) => {
-                        let x = { name: b.name, price: String(b.price), color: b.color, size: b.size, subcategory: b.subcategory_product, picture: b.productPictures[0], link: "/" }
+                    {meiliFetch?.map((b, index) => {
+                        let x = { name: b.name, price: String(b.price), color: b.colorName, size: b.uniqueSizeName, subcategory: b.subcatName, picture: b.productPictures[0], link: "/" }
                         return (
                             <ProductCard key={"p-" + index} width='100%' height='100%' data={x} />
                         );

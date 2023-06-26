@@ -1,10 +1,10 @@
 import { useAppSelector } from "../../app/hooks";
 
 export default function Features(props: {
-  features: Array<{ img: string; title: string; link:string; desc: string }>;
+  data: Array<{ img: string; title: string; link:string; desc: string }>;
   margin?: string;
 }) {
-  const arr = props.features;
+  const arr = props.data;
   const language = useAppSelector((state) => state.languageSlice.language);
   return (
     <div className="features" style={{ margin: props.margin }}>

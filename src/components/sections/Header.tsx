@@ -1,12 +1,16 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { useNavigate } from "react-router-dom";
 
-export default function Header(props: {
-  data: { title: string, desc: string, img: string, link: string },
-  minHeight?: string;
+type Props = {
+  data: {
+    title: string, desc: string, img: string, link: string
+  }
+  minHeight?: string,
   margin?: string
-}) {
+}
+
+const Header = (props: Props) => {
   const language = useAppSelector((state) => state.languageSlice.language);
   const navigate = useNavigate()
   return (
@@ -22,3 +26,5 @@ export default function Header(props: {
     </div>
   );
 }
+
+export default Header

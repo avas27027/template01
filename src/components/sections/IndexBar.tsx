@@ -3,8 +3,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { setTheme } from "../../app/slices/themeSlice";
-import { Router, NavLink } from "react-router-dom";
-import { useIndexBar } from "../../queries/IndexBarHook";
+import { NavLink } from "react-router-dom";
+import FetchStrapi from "../../queries/fetchStrapi/FetchStrapi";
 
 export default function IndexBar(props: {
   height: string;
@@ -14,7 +14,7 @@ export default function IndexBar(props: {
   const [dropToogle, setDropToogle] = useState(false);
   const theme = useAppSelector((state) => state.themeSlice.theme);
   const dispach = useAppDispatch();
-  const data = useIndexBar()!
+  const data = new FetchStrapi().useIndex
 
   return (
     <div
@@ -27,7 +27,7 @@ export default function IndexBar(props: {
       </div>
       <div className="indexBar-content">
         <div className="indexBar-content-link__group" data-active={dropToogle}>
-          {data.map((l, index) => {
+          {!data.isLoading && data.data?.map((l, index) => {
             return (
               <NavLink key={"link-" + index} to={l.l}>
                 {l.name}

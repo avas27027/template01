@@ -1,0 +1,15 @@
+{
+    "product": {
+        "name": "product",
+        "filterNames": [
+            "subcategory_product.Name",
+            "colors_ref.colorName",
+            "size_ref.sizeName",
+            "price"
+        ]
+    },
+    "public-blog":{
+        "name":"public-blog",
+        "filterNames":[]
+    }
+}

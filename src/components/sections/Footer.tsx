@@ -4,16 +4,16 @@ import {
   AiOutlineCopyright,
 } from "react-icons/ai";
 import { useAppSelector } from "../../app/hooks";
-import { useFooter } from "../../queries/FooterHook";
+import FetchStrapi from "../../queries/fetchStrapi/FetchStrapi";
 
 export default function Footer() {
   const language = useAppSelector((state) => state.languageSlice.language);
-  const data = useFooter()!
+  const data = new FetchStrapi().useFooter
 
   return (
     <div className="footer">
       <div className="footer-grid">
-        {data.map((d, index) => {
+        {!data.isLoading && data.data?.map((d, index) => {
           return (
             <div className="footer-grid-col" key={"d-" + index}>
               <b>{d.title}</b>
