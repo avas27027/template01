@@ -1,0 +1,70 @@
+@use "../../Abstracts/" as *;
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    &-but {
+        &.logout {
+            background-color: red;
+        }
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .profile-picture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                height: 200px;
+                width: 200px;
+                object-fit: cover;
+                border-radius: 100%;
+                cursor: pointer;
+                &:hover{
+                    filter: brightness(.8);
+                }
+            }
+            input{
+                display: none;
+            }
+        }
+
+        .profile-item {
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+            input {
+                text-align: center;
+                border: 0;
+                font-size: 1.5em;
+                color: rgb(var(--fondo_opocite), .7);
+                width: 100%;
+
+                &:focus {
+                    border-bottom: 0;
+                }
+
+                &:hover {
+                    border-bottom: 0;
+                }
+            }
+
+            button {
+                position: absolute;
+                left: 100%;
+                background-color: unset;
+                color: rgb(var(--inputs_colors));
+            }
+        }
+    }
+}

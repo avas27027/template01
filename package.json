@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@ts-stack/markdown": "^1.4.0",
+    "@types/redux-persist": "^4.3.1",
     "gh-pages": "^5.0.0",
     "jwt-decode": "^3.1.2",
     "meilisearch": "^0.32.3",
@@ -20,6 +21,8 @@
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
     "sass": "^1.58.3",
     "swr": "^2.1.5"
   },

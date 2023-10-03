@@ -42,11 +42,22 @@
       }
     }
 
+    .login__register-but {
+      width: 50%;
+      display: flex;
+      gap: 5px;
+
+      button {
+        flex: 1;
+      }
+    }
+
     button {
       width: 50%;
       font-size: 1.2em;
       display: flex;
       justify-content: center;
+
       @media screen and (max-width: $large) {
         font-size: unset;
         width: 80%;
@@ -71,7 +82,8 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      #googleBut{
+
+      #googleBut {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,7 +92,8 @@
         box-shadow: 0 0 2px -1px black;
         gap: 5px;
       }
-      #facebookBut{
+
+      #facebookBut {
         display: flex;
         justify-content: center;
         align-items: center;

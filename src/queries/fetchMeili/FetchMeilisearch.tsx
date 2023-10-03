@@ -72,7 +72,7 @@ const publicBlogFunct = (res: ReturnType<typeof meilisearchCall> | undefined) =>
 }
 
 export default class FetchMeilisearch {
-    public meiliCall = (word: string, route: keyof typeof indexesMeili, filters?: string[][]) => {
+    private meiliCall = (word: string, route: keyof typeof indexesMeili, filters?: string[][]) => {
         const [response, setResponse] = useState<ReturnType<typeof meilisearchCall>>()
         useEffect(() => {
             let a = meilisearchCall(indexesMeili[route].name, word, { names: indexesMeili[route].filterNames, args: filters != undefined ? filters : [] })

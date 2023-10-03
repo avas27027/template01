@@ -10,7 +10,7 @@ export default function Accordion(props: {
   const accHead = useRef<Array<HTMLDivElement>>([]);
   return (
     <div className="accordion-group">
-      {arr.map((f, index) => {
+      {arr?.map((f, index) => {
         return (
           <div
             className={index === 0 ? "accordion first" : "accordion"}

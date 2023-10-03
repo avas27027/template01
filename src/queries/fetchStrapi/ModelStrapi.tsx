@@ -136,3 +136,29 @@ export type ColorsInterface = {
 export type SizeInterface = {
     data: Array<{ attributes: { sizeName: string, uniqueSizeName: string } }>
 }
+
+export type loginRegisterInterface = {
+    jwt: string,
+    user: { id: string, username: string, email: string }
+}
+
+export type meInterface = {
+    id: string,
+    username: string,
+    email: string,
+    profilePhoto: {
+        formats: {
+            small: { url: string }
+        }
+    }
+}
+
+export type uploadFileInterface = {
+    id: string,
+    formats: {
+        large?: { url: string },
+        medium?: { url: string },
+        small?: { url: string },
+        thumbnail?: { url: string }
+    }
+}

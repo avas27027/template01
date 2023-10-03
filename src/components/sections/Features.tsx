@@ -8,7 +8,7 @@ export default function Features(props: {
   const language = useAppSelector((state) => state.languageSlice.language);
   return (
     <div className="features" style={{ margin: props.margin }}>
-      {arr.map((f, index) => {
+      {arr?.map((f, index) => {
         return (
           <div
             className={index % 2 === 0 ? "feature" : "feature inv"}

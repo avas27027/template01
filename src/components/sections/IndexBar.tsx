@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
@@ -11,10 +11,12 @@ export default function IndexBar(props: {
   themeBut?: boolean;
   title: string;
 }) {
+  const user = useAppSelector(state => state.userSlice.user)
   const [dropToogle, setDropToogle] = useState(false);
   const theme = useAppSelector((state) => state.themeSlice.theme);
   const dispach = useAppDispatch();
   const data = new FetchStrapi().useIndex
+
 
   return (
     <div
@@ -34,6 +36,7 @@ export default function IndexBar(props: {
               </NavLink>
             );
           })}
+          {user != ""? <NavLink to={"/profile"}>Perfil</NavLink> : <NavLink to={"/login"}>Login</NavLink>}
           <button
             onClick={() => {
               dispach(setTheme(theme === "light" ? "dark" : "light"));
